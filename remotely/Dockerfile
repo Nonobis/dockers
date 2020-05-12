@@ -46,4 +46,4 @@ RUN setfacl -R -m u:www-data:rwx /var/www/remotely/
 RUN chown -R www-data:www-data /var/www/remotely/
 
 WORKDIR /var/www/remotely/
-ENTRYPOINT ["dotnet", "Remotely_Server.dll", "/var/www/remotely/appsettings.json"]
+ENTRYPOINT ["dotnet", "Remotely_Server.dll", "/var/www/remotely/appsettings.json", "/var/www/remotely/Remotely.db"]
