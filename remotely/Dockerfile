@@ -39,7 +39,7 @@ RUN apt-get -y  install dotnet-sdk-3.1
 ######################################################################################################################
 ################################################# Install Application ################################################
 RUN mkdir -p /var/www/remotely/
-RUN wget "https://github.com/Jay-Rad/Remotely/releases/latest/download/Remotely_Server_Linux-x64.zip"
+RUN wget "https://github.com/lucent-sea/Remotely/releases/latest/download/Remotely_Server_Linux-x64.zip"
 RUN unzip -o Remotely_Server_Linux-x64.zip -d /var/www/remotely/
 RUN rm Remotely_Server_Linux-x64.zip
 RUN setfacl -R -m u:www-data:rwx /var/www/remotely/
