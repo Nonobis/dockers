@@ -39,7 +39,7 @@ RUN apt-get -y  install dotnet-sdk-3.1
 ######################################################################################################################
 ################################ Download and Install Application ####################################################
 RUN mkdir -p /var/www/remotely/
-RUN curl -s https://api.github.com/repos/lucent-sea/Remotely/releases/latest | grep "browser_download_url.*Remotely_Server_Linux-x64.zip" | cut -d ":" -f 2,3 | tr -d \" | wget -qi -)
+RUN curl -s https://api.github.com/repos/lucent-sea/Remotely/releases/latest | grep "browser_download_url.*Remotely_Server_Linux-x64.zip" | cut -d ":" -f 2,3 | tr -d \" | wget -qi -
 RUN unzip -o Remotely_Server_Linux-x64.zip -d /var/www/remotely/
 RUN rm Remotely_Server_Linux-x64.zip
 RUN setfacl -R -m u:www-data:rwx /var/www/remotely/
