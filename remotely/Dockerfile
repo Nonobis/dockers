@@ -16,7 +16,7 @@ EXPOSE 5000/tcp
 ################################################# Install prerequisites ##############################################
 RUN apt-get update 
 RUN apt-get upgrade -y
-RUN apt-get -y install wget unzip acl ffmpeg libc6-dev libgdiplus
+RUN apt-get -y install wget curl unzip acl ffmpeg libc6-dev libgdiplus
 RUN apt-get update	
 RUN apt-get -y install software-properties-common
 
@@ -31,7 +31,6 @@ RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update	
 RUN add-apt-repository universe
 RUN apt-get -y install apt-transport-https
-RUN apt-get -y install curl
 
 # Install the .NET Core SDK
 RUN apt-get update	
