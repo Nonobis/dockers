@@ -31,6 +31,7 @@ RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get update	
 RUN add-apt-repository universe
 RUN apt-get -y install apt-transport-https
+RUN apt-get -y install curl
 
 # Install the .NET Core SDK
 RUN apt-get update	
