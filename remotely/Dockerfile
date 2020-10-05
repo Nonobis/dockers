@@ -7,9 +7,6 @@ MAINTAINER Arnaud Dartois <nonobis@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive 
 ENV ASPNETCORE_ENVIRONMENT="Production"
 ENV ASPNETCORE_URLS http://*:5000
-ENV ORG_NAME lucent-sea
-ENV REPO_NAME Remotely
-ENV RELEASE_VERSION $(curl -s https://api.github.com/repos/${ORG_NAME}/${REPO_NAME}/releases/latest | grep "browser_download_url" | grep "Linux-x64" | cut -d'v' -f2 | cut -d'"' -f1)
 
 ######################################################################################################################
 ########################################### Expose Port or Volumes ###################################################
@@ -40,9 +37,12 @@ RUN apt-get update
 RUN apt-get -y  install dotnet-sdk-3.1
 
 ######################################################################################################################
-################################################# Install Application ################################################
+################################ Download and Install Application ####################################################
+ENV RELEASE_VERSION $(curl -s https://api.github.com/repos/lucent-sea/Remotely/releases/latest | grep "browser_download_url" | grep "Linux-x64" | cut -d'v' -f2 | cut -d'"' -f1)
+RUN echo 'Last version to download : ${RELEASE_VERSION}'
+
 RUN mkdir -p /var/www/remotely/
-RUN wget "https://github.com/$(ORG_NAME)/$(REPO_NAME)/releases/download/v${RELEASE_VERSION}/Remotely_Server_Linux-x64.zip"
+RUN wget "https://github.com/lucent-sea/Remotely/releases/download/v${RELEASE_VERSION}/Remotely_Server_Linux-x64.zip"
 RUN unzip -o Remotely_Server_Linux-x64.zip -d /var/www/remotely/
 RUN rm Remotely_Server_Linux-x64.zip
 RUN setfacl -R -m u:www-data:rwx /var/www/remotely/
