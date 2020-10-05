@@ -7,6 +7,7 @@ MAINTAINER Arnaud Dartois <nonobis@gmail.com>
 ENV DEBIAN_FRONTEND=noninteractive 
 ENV ASPNETCORE_ENVIRONMENT="Production"
 ENV ASPNETCORE_URLS http://*:5000
+ENV RELEASE_VERSION 2020.10.04.2215
 
 ######################################################################################################################
 ########################################### Expose Port or Volumes ###################################################
@@ -35,11 +36,11 @@ RUN apt-get -y install apt-transport-https
 # Install the .NET Core SDK
 RUN apt-get update	
 RUN apt-get -y  install dotnet-sdk-3.1
-	
+
 ######################################################################################################################
 ################################################# Install Application ################################################
 RUN mkdir -p /var/www/remotely/
-RUN wget "https://github.com/lucent-sea/Remotely/releases/latest/download/Remotely_Server_Linux-x64.zip"
+RUN wget "https://github.com/lucent-sea/Remotely/releases/download/v$(RELEASE_VERSION)/Remotely_Server_Linux-x64.zip"
 RUN unzip -o Remotely_Server_Linux-x64.zip -d /var/www/remotely/
 RUN rm Remotely_Server_Linux-x64.zip
 RUN setfacl -R -m u:www-data:rwx /var/www/remotely/
