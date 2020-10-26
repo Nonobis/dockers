@@ -3,19 +3,10 @@ MAINTAINER Arnaud Dartois <nonobis@gmail.com>
 
 ENV GO111MODULE=on
 
-RUN apt-get install g++  \
-	&& autoconf automake libtool \
-	autoconf-archive \
-	pkg-config \
-	libpng-dev \
-	libjpeg8-dev \
-	libtiff5-dev \
-	zlib1g-dev \
-	libicu-dev \
-	libpango1.0-dev \
-	libcairo2-dev \
-	libleptonica-dev \
-	libtesseract-dev \
+RUN apt-get -qq update \
+  && apt-get install -y \
+    libleptonica-dev \
+    libtesseract-dev \
 	imagemagick \
 	tesseract-ocr
 
