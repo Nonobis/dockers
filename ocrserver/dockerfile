@@ -5,9 +5,18 @@ ENV GO111MODULE=on
 
 RUN apt-get -qq update \
   && apt-get install -y \
+    libicu-dev \
+	libpango1.0-dev \
+	libcairo2-dev \
     libleptonica-dev \
     libtesseract-dev \
+	imagemagick \
     tesseract-ocr
+
+# Install the training tools by running, within the Tesseract directory:
+# RUN make \
+# make training \
+# make training-install
 
 # Load languages
 RUN apt-get install -y \
