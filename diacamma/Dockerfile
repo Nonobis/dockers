@@ -18,7 +18,13 @@ RUN locale-gen fr_FR.UTF-8
 	
 ######################################################################################################################
 ################################ INSTALL PYHTON      #################################################################
-RUN software-properties-common python-software-properties
+RUN apt-get install libssl-dev openssl
+RUN wget https://www.python.org/ftp/python/3.5.0/Python-3.5.0.tgz
+RUN tar xzvf Python-3.5.0.tgz
+RUN cd Python-3.5.0
+RUN ./configure --prefix /usr/local
+RUN make
+RUN make install
 
 ######################################################################################################################
 ########################################### Environnement Variables ##################################################
