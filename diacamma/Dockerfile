@@ -19,13 +19,9 @@ RUN apt-get update && \
 RUN locale-gen fr_FR.UTF-8
 	
 ######################################################################################################################
-################################ INSTALL PYHTON 3.5  #################################################################
-RUN add-apt-repository -y ppa:fkrull/deadsnakes
-RUN apt-get -y update
-RUN apt-get -y install python3.5
-
-RUN wget https://bootstrap.pypa.io/get-pip.py
-RUN python3.5 get-pip.py
+################################ INSTALL PYHTON      #################################################################
+apt-get install python3
+apt-get install python3-pip 
 
 ######################################################################################################################
 ########################################### Environnement Variables ##################################################
@@ -47,7 +43,7 @@ RUN curl --location -o /tmp/Diacamma_setup.tar.gz http://www.sd-libre.fr/downloa
 
 RUN cd /var/lucterios2
 RUN . virtual_for_lucterios/bin/activate
-RUN python3.5 -m  pip install gunicorn psycopg2-binary mysqlclient
+RUN pip install gunicorn psycopg2-binary mysqlclient
 
 COPY entrypoint.d/ /entrypoint.d/
 COPY bin/backup.sh /usr/local/bin/backup
