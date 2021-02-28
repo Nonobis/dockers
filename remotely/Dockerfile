@@ -8,7 +8,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV ASPNETCORE_ENVIRONMENT="Production"
 ENV ASPNETCORE_URLS https://*:5000
 ENV ASPNETCORE_HTTPS_PORT=5000
-ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/var/www/remotely/.aspnet/https/remotely.pfx
+ENV GENERATE_HTTPS_CERTIFICATE=true
+ENV ASPNETCORE_Kestrel__Certificates__Default__BasePath=/var/www/remotely/.aspnet/https
+ENV ASPNETCORE_Kestrel__Certificates__Default__CertificateName=remotely.pfx
 ENV ASPNETCORE_Kestrel__Certificates__Default__Password=remotely
 
 
@@ -42,8 +44,8 @@ RUN setfacl -R -m u:www-data:rwx /var/www/remotely/
 RUN chown -R www-data:www-data /var/www/remotely/
 
 # Generate https certificate
-RUN mkdir -p /var/www/remotely/.aspnet/https/ 
-RUN dotnet dev-certs https --clean && dotnet dev-certs https -ep /var/www/remotely/.aspnet/https/remotely.pfx -p "remotely"
+RUN if [ "$GENERATE_HTTPS_CERTIFICATE" = "true" ] ; then mkdir -p ${ASPNETCORE_Kestrel__Certificates__Default__BasePath}; fi
+RUN if [ "$GENERATE_HTTPS_CERTIFICATE" = "true" ] ; then dotnet dev-certs https --clean && dotnet dev-certs https -ep ${ASPNETCORE_Kestrel__Certificates__Default__BasePath}/${ASPNETCORE_Kestrel__Certificates__Default__CertificateName} -p "${ASPNETCORE_Kestrel__Certificates__Default__Password}"; fi
 
 WORKDIR /var/www/remotely/
 VOLUME /var/www/remotely
