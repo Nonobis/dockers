@@ -27,15 +27,15 @@ RUN chown -R www-data:www-data /var/www/tachidesk/
 
 ######################################################################################################################
 ################################################# Create specific user ###############################################
-RUN useradd -d /home/tachidesk -ms /bin/bash -g root -G sudo -p ubuntu ubuntu
+RUN useradd -d /home/tachidesk/ -ms /bin/bash -g root -G sudo -p ubuntu ubuntu
 RUN mkdir /opt/data  && chown ubuntu /opt/data
 WORKDIR /home/tachidesk
 
 ######################################################################################################################
 ################################################# Expose Volume ######################################################
-VOLUME [ "/opt/data" ]
+VOLUME [ "/opt/data/.local/share/Tachidesk" ]
 
 ######################################################################################################################
 ####################################### START Application ############################################################
 WORKDIR /var/www/tachidesk
-CMD ["java","-jar","/var/www/tachidesk/latest.jar"]
+CMD ["java","-jar","/var/www/tachidesk/latest.jar","--server.address", "0.0.0.0"]
