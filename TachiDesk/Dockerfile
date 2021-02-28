@@ -21,19 +21,16 @@ RUN apt-get update
 ######################################################################################################################
 ####################################### Download lastest JAR #########################################################
 RUN mkdir -p /var/www/tachidesk
-RUN curl -s https://api.github.com/repos/AriaMoradi/Tachidesk/releases/latest | grep "browser_download_url.Tachidesk-v*.jar" | cut -d ":" -f 2,3 | tr -d \" | wget -qi - -o /var/www/tachidesk/latest.jar
+RUN mkdir -p /root/.local/share/Tachidesk/extensions
+RUN mkdir -p /root/.local/share/Tachidesk/thumbnails
+RUN mkdir -p /root/.local/share/Tachidesk/manga
+RUN curl -L $(curl -s https://api.github.com/repos/AriaMoradi/Tachidesk/releases/latest | grep -o "https.*jar") -o /var/www/tachidesk/latest.jar
 RUN setfacl -R -m u:www-data:rwx /var/www/tachidesk/
 RUN chown -R www-data:www-data /var/www/tachidesk/
 
 ######################################################################################################################
-################################################# Create specific user ###############################################
-RUN useradd -d /home/tachidesk/ -ms /bin/bash -g root -G sudo -p ubuntu ubuntu
-RUN mkdir /opt/data  && chown ubuntu /opt/data
-WORKDIR /home/tachidesk
-
-######################################################################################################################
 ################################################# Expose Volume ######################################################
-VOLUME [ "/opt/data/.local/share/Tachidesk" ]
+VOLUME [ "/root/.local/share/Tachidesk/extensions", "/root/.local/share/Tachidesk/manga", "/root/.local/share/Tachidesk/thumbnails" ]
 
 ######################################################################################################################
 ####################################### START Application ############################################################

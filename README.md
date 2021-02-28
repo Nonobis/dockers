@@ -14,4 +14,6 @@ Docker for installing diacamma release from https://github.com/Diacamma2/syndic
 Docker for TachiDesk, a port of Tachyiomi on Desktop (Windows / Mac / Linux) lastest release from https://github.com/AriaMoradi/Tachidesk
 
 How to run :
-docker run -p 4567:4567 nonobis/tachidesk
+docker run -p 4567:4567 -v your_folder:/root/.local/share/Tachidesk/manga -e TZ='Europe/Paris' -e 'PGID'='100' -e 'PUID'='99' --restart unless-stopped nonobis/tachidesk
+
+You can extract manga from volume if you want.
