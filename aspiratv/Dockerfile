@@ -37,4 +37,4 @@ VOLUME [ "/var/www/aspiratv/data", "/var/www/aspiratv/config.json" ]
 ######################################################################################################################
 ####################################### START Application ############################################################
 WORKDIR /var/www/aspiratv
-CMD ["aspiratv", "run", "--config", "/var/www/aspiratv/config.json", "--headless", "--log", "aspiratv.log", "--log-level", "$(LOG_LEVEL)", "--max-tasks", "$(MAX_CONCURRENT_DOWNLOAD)"]
+CMD ["aspiratv", "run", "--config", "/var/www/aspiratv/config.json", "--headless", "--log", "/var/www/aspiratv/aspiratv.log", "--log-level", "$(LOG_LEVEL)", "--max-tasks", "$(MAX_CONCURRENT_DOWNLOAD)"]
