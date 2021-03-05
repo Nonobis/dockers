@@ -23,10 +23,11 @@ RUN apk add --no-cache ffmpeg
 
 ######################################################################################################################
 ################################################# Expose Volume ######################################################
-RUN mkdir -p /var/www/aspiratv/config
-RUN mkdir -p /var/www/aspiratv/data
-VOLUME [ "/var/www/aspiratv/data"]
+RUN mkdir -p /opt/data
+RUN touch /go/src/aspiratv/config.json
+VOLUME [ "/opt/data", "/go/src/aspiratv/config.json"]
+
 
 ################################################# Run Application  ###################################################
-CMD ["./aspiratv", "run --config /var/www/aspiratv/config/config.json --headless --log /var/www/aspiratv/config/aspiratv.log --log-level $(LOG_LEVEL) --max-tasks $(MAX_CONCURRENT_DOWNLOAD"]
+CMD ["./aspiratv", "run --headless --log aspiratv.log --log-level $(LOG_LEVEL) --max-tasks $(MAX_CONCURRENT_DOWNLOAD"]
 

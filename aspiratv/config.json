@@ -1,32 +1,47 @@
 {
-  "Destinations": {
-    "Documentaires": "/var/www/aspiratv/data/Documentaires",
-    "Jeunesse": "/var/www/aspiratv/data/Jeunesse",
-    "Séries": "/var/www/aspiratv/data/Series",
-    "News": "/var/www/aspiratv/data/News"
-  },
-  "Providers": {
-    "artetv": {
-      "Enabled": true        
-    },
-    "gulli":{
-      "Enabled": true
-    },
-    "francetv":{
-        "Enabled": true
-    }
-  },
-  "WatchList": [
-    {
-      "Show": "Science Grand Format",
-      "Provider": "francetv",
-      "Destination": "Documentaires"
-    },
-    {
-      "Show": "Oggy et les cafards",
-      "Provider": "gulli",
-      "Destination": "Jeunesse",
-      "TitleFilter": "(?i)Oggy"
-    }
-  ]
+	"Destinations": {
+		"Documentaires": "/opt/data/Documentaires",
+		"Jeunesse": "/opt/data/Jeunesse",
+		"Séries": "/opt/data/Series",
+		"News": "/opt/data/News"
+	},
+	"Providers": {
+		"artetv": {
+			"Enabled": true
+		},
+		"gulli": {
+			"Enabled": true
+		},
+		"francetv": {
+			"Enabled": true
+		}
+	},
+	"WatchList": [
+		{
+			"Show": "Science Grand Format",
+			"Provider": "francetv",
+			"Destination": "Documentaires"
+		},
+		{
+			"Show": "Les pouvoirs extraordinaires du corps humain",
+			"Provider": "francetv",
+			"Destination": "Documentaires"
+		},
+		{
+			"Show": "Jack Wilder et la mystérieuse cité d'or",
+			"Provider": "francetv",
+			"Destination": "Movies"
+		},
+		{
+			"Show": "Oggy et les cafards",
+			"Provider": "gulli",
+			"Destination": "Jeunesse",
+			"TitleFilter": "(?i)Oggy"
+		},
+		{
+			"Show": "Les Pyjamasques",
+			"Provider": "francetv",
+			"Destination": "Jeunesse"
+		}
+	]
 }
