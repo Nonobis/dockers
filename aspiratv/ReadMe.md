@@ -7,6 +7,6 @@ selon une organisation reconnue par des programmes comme PLEX ou EMBY. Les méta
 sont placées de façon à être directement reconnues par Emby (à tester dans Plex).
 
 How to run :
-docker run -v c:\\temp\\aspiratv\\data:/var/www/aspiratv/data -v c:\\tem\\aspiratv\\config.json:/var/www/aspiratv/config.json nonobis/aspiratv
+docker run -v c:\\temp\\aspiratv\\data:/var/www/aspiratv/data -v c:\\temp\\aspiratv\\config.json:/var/www/aspiratv/config.json nonobis/aspiratv
 
 You can extract manga from volume if you want.
