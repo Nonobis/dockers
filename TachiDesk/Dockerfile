@@ -24,7 +24,7 @@ RUN mkdir -p /var/www/tachidesk
 RUN mkdir -p /root/.local/share/Tachidesk/extensions
 RUN mkdir -p /root/.local/share/Tachidesk/thumbnails
 RUN mkdir -p /root/.local/share/Tachidesk/manga
-RUN curl -L $(curl -s https://github.com/Suwayomi/Tachidesk/releases/download/v0.3.0-rc2/Tachidesk-v | grep -o "https.*jar") -o /var/www/tachidesk/latest.jar
+RUN curl -L $(curl -s https://github.com/Suwayomi/Tachidesk/releases/download/Tachidesk-v | grep -o "https.*jar") -o /var/www/tachidesk/latest.jar
 RUN setfacl -R -m u:www-data:rwx /var/www/tachidesk/
 RUN chown -R www-data:www-data /var/www/tachidesk/
 
