@@ -7,6 +7,8 @@ Docker for installing lastest release of "Remotely" from https://github.com/luce
 
 - A remote control and remote scripting solution, built with .NET Core, SignalR Core, and WebRTC.
 
+Image removed on docker, i am now using unraid package done by Marzel's
+
 ** Diacamma **
 Docker for installing diacamma release from https://github.com/Diacamma2/syndic
 
